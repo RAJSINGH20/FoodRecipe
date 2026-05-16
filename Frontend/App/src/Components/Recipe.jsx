@@ -1,7 +1,7 @@
 // Recipe.jsx
 
 import { useEffect, useState } from 'react'
-import Navbar from '../Nav.jsx'
+import Navbar from './Skeleton/Nav.jsx'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import API from '../utils/api'

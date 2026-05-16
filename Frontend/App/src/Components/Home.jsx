@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Skeleton/Nav';
+import Navbar from './Skeleton/Nav.jsx';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
