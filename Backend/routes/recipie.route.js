@@ -10,6 +10,8 @@ import {
     deleteRecipe
 } from "../controller/recipe.controller.js";
 
+import { isAuthenticated } from "../config/authMiddleware.js";
+
 const router = express.Router();
 
 
@@ -26,18 +28,13 @@ router.get('/test', (req, res) => {
 
 
 // ADD RECIPE WITH IMAGE
-router.post(
-    '/add',
-    upload.single('img'),
-    AddRecipe
-);
-
+router.post('/add',upload.single('img'),isAuthenticated,AddRecipe);
 // GET RECIPES
-router.get('/all', getRecipe);
+router.get('/all',isAuthenticated, getRecipe);
 
 router.get('/:id', getSingleRecipe);
 
-router.post('/delete/:id', deleteRecipe);
+router.post('/delete/:id', isAuthenticated, deleteRecipe);
 
 
 

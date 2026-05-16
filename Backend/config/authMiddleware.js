@@ -4,14 +4,18 @@ export const isAuthenticated = async (req, res, next) => {
 
     try {
 
-        const token = req.headers.authorization
-        console.log(token)
+        const authHeader = req.headers.authorization
 
-        if (!token) {
+        console.log(authHeader)
+
+        if (!authHeader) {
             return res.status(401).json({
                 message: 'Please login first'
             })
         }
+
+        // Bearer token split
+        const token = authHeader.split(' ')[1]
 
         const decoded = jwt.verify(token, 'SECRET_KEY')
 
@@ -20,6 +24,8 @@ export const isAuthenticated = async (req, res, next) => {
         next()
 
     } catch (error) {
+
+        console.log(error)
 
         res.status(401).json({
             message: 'Invalid Token'

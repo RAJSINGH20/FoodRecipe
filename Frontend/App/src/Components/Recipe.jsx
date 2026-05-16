@@ -1,10 +1,10 @@
 // Recipe.jsx
 
 import { useEffect, useState } from 'react'
-import Navbar from './Skeleton/Nav'
+import Navbar from '../Nav.jsx'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import axios from 'axios'
+import API from '../utils/api'
 import { useAuth } from '../context/useAuth.jsx'
 import { toast } from 'react-hot-toast'
 
@@ -26,7 +26,7 @@ const Recipe = () => {
 
             try {
 
-                const response = await axios.get(
+                const response = await API.get(
                     `${URL}/api/food/all`
                 )
 
@@ -70,7 +70,7 @@ const Recipe = () => {
 
         try {
 
-            const response = await axios.get(
+            const response = await API.get(
                 `${URL}/api/food/${id}`
             )
 

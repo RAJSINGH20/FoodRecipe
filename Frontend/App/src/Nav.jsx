@@ -47,7 +47,7 @@ const Navbar = () => {
 
             <nav className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)]">
 
-                {/* Glow */}
+                {/* Glow Effects */}
                 <div className="absolute top-0 left-10 w-40 h-40 bg-orange-500/20 blur-[100px] rounded-full"></div>
                 <div className="absolute top-0 right-10 w-40 h-40 bg-pink-500/20 blur-[100px] rounded-full"></div>
 
@@ -116,7 +116,7 @@ const Navbar = () => {
                                 )
                             })}
 
-                            {/* LOGOUT */}
+                            {/* LOGOUT BUTTON */}
                             <button
                                 onClick={handleLogout}
                                 className="ml-3 flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white font-bold shadow-xl hover:scale-105 hover:shadow-pink-500/50 transition-all duration-500"

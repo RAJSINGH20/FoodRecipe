@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './Skeleton/Nav'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
 import { toast } from 'react-hot-toast'
-import axios from 'axios'
+import API from '../utils/api'
 
 const ViewRecipe = () => {
 
@@ -14,24 +14,14 @@ const ViewRecipe = () => {
 
     const recipe = location.state?.recipe
 
-    const [isFavorite, setIsFavorite] = useState(false)
-
-    // CHECK FAVORITE
-    useEffect(() => {
-
+    const [isFavorite, setIsFavorite] = useState(() => {
         const favorites =
             JSON.parse(localStorage.getItem('favoriteRecipes')) || []
 
-        const exists = favorites.find(
+        return favorites.some(
             (item) => item._id === recipe?._id
         )
-
-        if (exists) {
-
-            setIsFavorite(true)
-        }
-
-    }, [recipe])
+    })
 
     // ADD TO FAVORITE
     const handleFavorite = () => {
@@ -77,7 +67,7 @@ const ViewRecipe = () => {
 
         try {
 
-            await axios.post(
+            await API.post(
                 `http://localhost:2000/api/food/delete/${recipeid}/`
             )
 

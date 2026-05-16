@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import API from '../utils/api'
 import { toast, Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
@@ -50,7 +50,7 @@ const Form = () => {
                     .map(item => item.trim())
             }
 
-            const response = await axios.post(
+            const response = await API.post(
                 `${URL}/api/food/add`,
                 payload
             )

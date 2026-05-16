@@ -1,6 +1,6 @@
 // REGISTRATION.jsx
 
-import axios from 'axios'
+import API from '../utils/api'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -35,7 +35,7 @@ const Registration = () => {
 
       setLoading(true)
 
-      const response = await axios.post(
+      const response = await API.post(
         `${URL}/api/user/register`,
         formData
       )
